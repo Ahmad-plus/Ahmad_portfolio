@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Abdulrashid - Data Analyst Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #fafaf9;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 100;
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+        
+        nav .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #6b7280;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: #1f2937;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .profile-image-container {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+        
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+        
+        .hero .subtitle {
+            font-size: 20px;
+            color: #3b82f6;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .hero > p {
+            font-size: 16px;
+            color: #6b7280;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .badge-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1f2937;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery-item {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            padding: 1rem 1.5rem 0;
+            color: #1f2937;
+        }
+        
+        .gallery-item p {
+            font-size: 14px;
+            color: #6b7280;
+            padding: 0.5rem 1.5rem 1.5rem;
+            line-height: 1.6;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            background: #dbeafe;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 1.25rem;
+        }
+        
+        .project-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #1f2937;
+        }
+        
+        .project-desc {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 1.25rem;
+        }
+        
+        .project-tag {
+            background: #f3f4f6;
+            color: #4b5563;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .metric {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        
+        .skill-category {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+        
+        .skill-category h3 {
+            font-size: 13px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+        
+        .skill-item {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e7eb;
+        }
+        
+        .timeline-item {
+            margin-bottom: 2.5rem;
+            margin-left: 60px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -45px;
+            top: 2px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+        }
+        
+        .timeline-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #1f2937;
+        }
+        
+        .timeline-item .position {
+            color: #3b82f6;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-item .date {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-bottom: 0.75rem;
+        }
+        
+        .timeline-item p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #3b82f6;
+            padding: 12px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 15px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resume-button {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-size: 15px;
+        }
+        
+        .resume-button:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+        /* Footer */
+        .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: #6b7280;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: #3b82f6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .hero-text {
+                width: 100%;
+            }
+            
+            .profile-image-container {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero .subtitle {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 8px;
+            }
+            
+            .timeline-item {
+                margin-left: 50px;
+            }
+            
+            .timeline-item::before {
+                left: -38px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Ahmad Abdulrashid</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero" id="about">
+                <div class="hero-text">
+                    <h1>Ahmad Abdulrashid</h1>
+                    <p class="subtitle">Data Analyst | Researcher</p>
+                    <p>Data Analyst with a research mindset. MSc Computer Science background focused on machine learning, statistical analysis, and data-driven problem-solving. Skilled in model development, exploratory research, and turning complex data into actionable insights.</p>
+                    
+                    <div class="badge-group">
+                        <span class="badge">Excel</span>
+                        <span class="badge">Tableau</span>
+                        <span class="badge">Power BI</span>
+                        <span class="badge">Python</span>
+                        <span class="badge">Research</span>
+                        <span class="badge">SQL</span>
+                        <span class="badge">Data Analysis</span>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                    <a href="Ahmad_Professional_CV_upload.pdf" class="resume-button" download>Download Resume</a>
+                </div>
+                </div>
+                
+                <div class="profile-image-container">
+                    <div class="profile-image-placeholder">
+                        <img src="AA pic.jpg" alt="Profile Photo">
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <!-- Featured Projects -->
+            <section class="section" id="projects">
+                <h2 class="section-title">Projects & Development</h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">🏨</div>
+                        <h3 class="project-title">Airbnb Data Analysis Dashboard</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Tableau</span>
+                            <span class="project-tag">Data Visualization</span>
+                        </div>
+                        <p class="project-desc">Created an interactive Tableau dashboard analyzing Airbnb listing data. Explored pricing patterns, geographic distribution, and occupancy trends. Published on Tableau Public.</p>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-label">Status</span>
+                                <span class="metric-value">Published</span>
+                                <a href="https://public.tableau.com/app/profile/ahmad.abdulrashid/viz/AhmadAbdulrashidRumahAirBnBFullProject/Dashboard1?publish=yes" target="_blank">
+                                Tableau Dashboard
+                                </a>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Tool</span>
+                                <span class="metric-value">Tableau</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">📊</div>
+                        <h3 class="project-title">World Bank Data Analytics Fundamentals</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Course</span>
+                            <span class="project-tag">Tableau</span>
+                        </div>
+                        <p class="project-desc">Completed World Bank's data analytics fundamentals course. Designed and built multiple dashboards demonstrating key analytics concepts including trend analysis and KPI tracking.</p>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-label">Dashboards</span>
+                                <span class="metric-value">5+</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Status</span>
+                                <span class="metric-value">Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">🔒</div>
+                        <h3 class="project-title">Security Data Analysis - Dangote Cement</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Excel</span>
+                            <span class="project-tag">Data Analysis</span>
+                        </div>
+                        <p class="project-desc">Analyzed 12 months of CCTV surveillance and security incident data for Dangote Cement. Created comprehensive year-end security reports identifying patterns, trends, and recommendations for management.</p>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-label">Data Period</span>
+                                <span class="metric-value">12 months</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Tool</span>
+                                <span class="metric-value">Excel</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">❤️</div>
+                        <h3 class="project-title">ANFIS-PSO Heart Disease Diagnosis Model</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">ANFIS-PSO</span>
+                            <span class="project-tag">Research</span>
+                        </div>
+                        <p class="project-desc">Developed an AI-powered heart disease prediction model using ANFIS-PSO technology with 140+ adaptive neural-flow rules. The model achieved 100% specificity and 87% F1 score, significantly outperforming ANFIS-GA by reducing critical false positives in medical diagnosis.</p>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-label">Specificity</span>
+                                <span class="metric-value">100%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">F1 Score</span>
+                                <span class="metric-value">87%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                
+            </section>
+            
+            <!-- Portfolio Gallery -->
+            <section class="section" id="dashboard">
+                <h2 class="section-title">Portfolio of my Research & Personal Projects</h2>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="Air BnB.jpg" alt="Airbnb Tableau Dashboard">
+                        <h3>Airbnb Analysis Dashboard</h3>
+                        <p>Interactive Tableau dashboard analyzing Airbnb listings, pricing trends, and occupancy patterns.</p>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="World Bank Dashboard.jpg" alt="World Bank Course Dashboard">
+                        <h3>World Bank Analytics Dashboard</h3>
+                        <p>Dashboard created during World Bank Data Analytics Fundamentals course demonstrating KPI tracking and trend analysis.</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="World Bank.jpg" alt="World Bank Course Dashboard">
+                        <h3>World Bank Analytics Dashboard</h3>
+                        <p>Dashboard created during World Bank Data Analytics Fundamentals course demonstrating KPI tracking and trend analysis.</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="ANFIS-Final.jpg" alt="ANFIS-PSO for heart disease diagnosis">
+                        <h3>ANFIS-PSO for Heart Disease Prediction</h3>
+                        <p>Developed an ANFIS-PSO machine learning model for heart disease diagnosis using 140 adaptive neural-flow rules optimized by particle swarm optimization. The model outperformed traditional ANFIS-GA methods with 100% specificity and 87% F1 score, significantly reducing false positives critical for medical diagnosis.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section">
+                <h2 class="section-title">Skills & Tools</h2>
+                
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Visualization & BI</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Power BI</span>
+                            <span class="skill-item">Tableau</span>
+                            <span class="skill-item">Excel</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Programming</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">SQL</span>
+                            <span class="skill-item">Google Sheets</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Analytics Skills</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Data Analysis</span>
+                            <span class="skill-item">Data Visualization</span>
+                            <span class="skill-item">Reporting</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Domain Expertise</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Security Analytics</span>
+                            <span class="skill-item">Trend Analysis</span>
+                            <span class="skill-item">Pattern Recognition</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Certifications Section -->
+            <section class="section">
+                <h2 class="section-title">Certifications & Courses</h2>
+                
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>📚 Certification</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Fundamentals of data visualization</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🎓 Professional Development</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Tableau Dashboard Design</span>
+                            <span class="skill-item">Excel Data Analysis</span>
+                            <span class="skill-item">Power BI Dashboard</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🔄 Active Learning</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Advanced SQL & Databases</span>
+                            <span class="skill-item">Deep Learning</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>💡 Specializations</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Data Analysis & Visualization</span>
+                            <span class="skill-item">Research</span>
+                            <span class="skill-item">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section" id="experience">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>IT Support & Intelligence Professional</h3>
+                        <p class="position">Dangote Cement</p>
+                        <p class="date">Current</p>
+                        <p>Over Four+ years of experience at Dangote Cement Transport, where I prepared compliance and operational reports, monitored performance through dashboards, and supported cross-departmental coordination.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>Data Collection Officer</h3>
+                        <p class="position">UNICEF</p>
+                        <p class="date">2022</p>
+                        <p>Collected and validated field data for UNICEF's Out-of-School Children Survey using the Open Data Kit (ODK) mobile data collection platform.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Contact CTA -->
+            <section class="cta-section" id="contact">
+                <h2>Let's connect!</h2>
+                <p>Actively seeking opportunities in Data Analytics, Machine Learning, Research, or IT Support. Passionate about leveraging data, technology, and analytical thinking to solve real-world problems, improve decision-making, and deliver measurable business value. Let's connect!
+</p>
+                <a href="mailto:aarumah234@gmail.com" class="cta-button">Get in touch</a>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/ahmad-abdulrashid-363012192/" target="_blank">💼 LinkedIn</a>
+                <a href="tel:+2347034640600">📞 +2347034640600</a>
+                <a href="mailto:aarumah234@gmail.com">📧 aarumah234@gmail.com</a>
+            </div>
+            <p>&copy; 2026. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
